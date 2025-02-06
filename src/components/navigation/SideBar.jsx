@@ -11,7 +11,7 @@ const Sidebar = () => {
         flexDirection: "column",
         width: "300px",
         height: "100vh",
-        padding: "41px 21px",
+        padding: "18px",
         background: "#143F66",
         boxShadow: "5px 0px 27px rgba(0, 0, 0, 0.25)",
         borderRight: "2px solid #9747FF",
@@ -19,33 +19,50 @@ const Sidebar = () => {
         alignItems: "flex-start",
       }}
     >
-      {/* Header Sidebar */}
-      <div style={{ width: "100%", color: "white", fontSize: 32, fontFamily: "Inter", fontWeight: "600" }}>
-        My Bot
-      </div>
-
-      <div
-        style={{
-          width: "100%",
-          marginBottom: 10,
-        }}
-      >
-        <MenuItem
-          label="Create Comment"
-          path="/create-comment"
+      <div className="flex flex-col w-full">
+        <div
           style={{
-            backgroundColor: "#2F6FB3", 
-            color: "white", 
-            fontWeight: "600", 
-            fontSize: "22px", 
+            color: "white",
+            fontSize: 20,
+            fontWeight: "600",
+            marginBottom: 40,
           }}
-        />
-      </div>
+        >
+          My Bot
+        </div>
 
-      <div style={{ height: 390, display: "flex", flexDirection: "column", gap: 12 }}>
-        <MenuItem label="Dashboard" path="/dashboard" />
-        <MenuItem label="History" path="/history" />
-        <MenuItem label="Bots" path="/bots" />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 18,
+            color: "white",
+          }}
+        >
+          <p className="text-lg font-semibold">Dashboard</p>
+          <div className="flex flex-col gap-2">
+            <MenuItem label="Dashboard" path="/dashboard" />
+          </div>
+
+          <p className="text-lg font-semibold text-white">Comment</p>
+          <div className="flex flex-col gap-2">
+            <MenuItem label="Process Comments" path="/create-comment" />
+            <MenuItem label="History" path="/history" />
+          </div>
+
+          <p className="text-lg font-semibold">Bots</p>
+          <div className="flex flex-col gap-2">
+            <MenuItem label="Bots" path="/bots" />
+            <MenuItem label="Register Bot" path="#" />
+          </div>
+
+          <p className="text-lg font-semibold">Accounts</p>
+          <div className="flex flex-col gap-2">
+            <MenuItem label="Profile" path="#" />
+            <MenuItem label="Accounts" path="#" />
+            <MenuItem label="Invite" path="#" />
+          </div>
+        </div>
       </div>
 
       {/* Logout */}
