@@ -3,10 +3,10 @@ name: Build Project
 on:
   push:
     branches:
-      - main  # Trigger workflow on pushes to the main branch
+      - main  
   pull_request:
     branches:
-      - main  # Trigger workflow on pull requests targeting the main branch
+      - main  
 
 jobs:
   build:
