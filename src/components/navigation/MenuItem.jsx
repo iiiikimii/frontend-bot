@@ -22,7 +22,7 @@ const MenuItem = ({ label, path }) => {
       className="hover:bg-[#11487C]"
     >
       <div style={{ width: 22, height: 22, background: "#FFFDFD", borderRadius: 7 }} />
-      <div style={{ color: "white", fontSize: 15, fontWeight: "500" }}>
+      <div style={{ color: "white", fontSize: 14, fontWeight: "500" }}>
         {label}
       </div>
     </div>
