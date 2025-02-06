@@ -1,23 +1,32 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../axios/config"; 
 import "./Login.css";
-
 
 const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    
-    // Contoh: Validasi login sederhana
-    if (username === "kimi" && password === "1234") {
-      navigate("/dashboard"); // Redirect ke Dashboard
-    } else {
+  
+    try {
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
+  
+      const response = await api.post("/login", formData);
+  
+      console.log("Login successful:", response.data);
+  
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login error:", error);
       alert("Username atau password salah!");
     }
   };
+  
 
   return (
     <div className="container">

@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import Login from "./pages/auth/Login";
+import Dashboard from "./pages/(authenticated)/dashboard/Dashboard";
+import History from "./pages/(authenticated)/history/History";
+import Bots from "./pages/(authenticated)/bots/Bots";
+import CreateComment from "./pages/(authenticated)/create-comments/CreateComments";
 
 function App() {
   return (
@@ -8,6 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/create-comment" element={<CreateComment />} />
+        <Route path="/bots" element={<Bots />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </Router>
   );
