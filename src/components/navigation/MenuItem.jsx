@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-const MenuItem = ({ label, path }) => {
+const MenuItem = ({ label, path,icon }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,7 +21,7 @@ const MenuItem = ({ label, path }) => {
       }}
       className="hover:bg-[#11487C]"
     >
-      <div style={{ width: 22, height: 22, background: "#FFFDFD", borderRadius: 7 }} />
+      {icon}
       <div style={{ color: "white", fontSize: 14, fontWeight: "500" }}>
         {label}
       </div>
