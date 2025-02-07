@@ -14,7 +14,7 @@ const MainWrapper = ({ title, description, children }) => {
         }}
       >
         {/* title */}
-        <div className="flex flex-col mw-full">
+        <div className="flex flex-col mw-full gap-1">
           <h1 className="text-3xl text-[#143F66] font-semibold">{title}</h1>
           <p>{description}</p>
         </div>
