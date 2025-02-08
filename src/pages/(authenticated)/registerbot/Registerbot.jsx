@@ -52,7 +52,7 @@ const RegisterBot = () => {
       <div className="flex flex-col gap-14 text-left">
         <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
           {renderInput("Name", "Account name", "accountName", handleChange)}
-          {renderInput("Sosmed", "Choose social media...", "sosmed", handleChange)}
+          {renderSelectInput("Sosmed", "sosmed", handleChange)}
           {renderFileInput("Cookie", handleFileChange)}
           <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>
           <button
@@ -76,6 +76,22 @@ const renderInput = (label, placeholder, name, onChange) => (
       placeholder={placeholder}
       onChange={onChange}
     />
+  </div>
+);
+
+const renderSelectInput = (label, name, onChange) => (
+  <div className="flex flex-col gap-2 w-full">
+    <label className="text-[#2B2B2B] text-base">{label}</label>
+    <select
+      name={name}
+      className="h-12 px-4 py-2 text-left rounded-lg border border-[#2B2B2B] w-full"
+      onChange={onChange}
+    >
+      <option value="">Choose social media...</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Tiktok">TikTok</option>
+      <option value="Facebook">Facebook</option>
+    </select>
   </div>
 );
 
