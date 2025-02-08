@@ -5,6 +5,9 @@ import History from "./pages/(authenticated)/history/History";
 import Bots from "./pages/(authenticated)/bots/Bots";
 import CreateComment from "./pages/(authenticated)/create-comments/CreateComments";
 import Register from "./pages/(authenticated)/registerbot/Registerbot";
+import Profile from "./pages/(authenticated)/profile/Profile";
+import Accounts from "./pages/(authenticated)/accounts/Accounts";
+import Invite from "./pages/(authenticated)/invite/Invite";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path="/bots" element={<Bots />} />
         <Route path="/history" element={<History />} />
         <Route path="/registerbot" element={<Register />} />
+        <Route path="/profile" element={<Profile/>} />
+        <Route path="/accounts" element={<Accounts/>} />
+        <Route path="/invite" element={<Invite/>} />
       </Routes>
     </Router>
   );
