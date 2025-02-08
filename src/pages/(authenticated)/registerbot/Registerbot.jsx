@@ -26,7 +26,7 @@ const RegisterBot = () => {
     data.append("cookie", formData.cookieFile);
 
     try {
-      const response = await fetch("{{base}}/cookie", {
+      const response = await fetch(`${base}/cookie`, {
         method: "POST",
         body: data,
       });
