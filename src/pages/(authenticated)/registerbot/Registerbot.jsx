@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 
+const base = import.meta.env.VITE_API_BASE_URL;
+
 const RegisterBot = () => {
   const [formData, setFormData] = useState({
     sosmed: "",
