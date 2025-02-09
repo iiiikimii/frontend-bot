@@ -7,3 +7,7 @@ testing
 [] Get Bot
 [] Create Bot
 [] History
+
+git add .
+git commit -m "informasi"
+git push
