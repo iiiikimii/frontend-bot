@@ -16,7 +16,6 @@ const History = () => {
   return (
     <MainWrapper title={"History"} description={"Here is what you add"}>
       <div style={{ display: "flex" }}>
-
         {/* Main Content */}
         <div
           style={{
@@ -27,13 +26,22 @@ const History = () => {
             alignItems: "flex-start", // Align everything to the left
             height: "100vh",
             fontFamily: "Inter",
-            position: "relative",  // Ensure absolute positioned elements are relative to this container
+            position: "relative", // Ensure absolute positioned elements are relative to this container
           }}
         >
           {/* Search and Sorting Section */}
-          <div style={{ width: "925px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div
+            style={{
+              width: "925px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             {/* Search Bar */}
-            <div style={{ width: "366px", height: "38px", position: "relative" }}>
+            <div
+              style={{ width: "366px", height: "38px", position: "relative" }}
+            >
               <div
                 style={{
                   width: "366px",
@@ -46,8 +54,29 @@ const History = () => {
                   border: "1px #1C8CF5 solid",
                 }}
               ></div>
-              <div style={{position:"absolute",padding:"7px",marginLeft:"8px"}}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="m21 21l-4-4m2-6a8 8 0 1 1-16 0a8 8 0 0 1 16 0"/></svg>
+              <div
+                style={{
+                  position: "absolute",
+                  padding: "7px",
+                  marginLeft: "8px",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                    d="m21 21l-4-4m2-6a8 8 0 1 1-16 0a8 8 0 0 1 16 0"
+                  />
+                </svg>
               </div>
 
               {/* Input field */}
@@ -73,9 +102,33 @@ const History = () => {
             </div>
 
             {/* Sorting Options */}
-            <div style={{ height: "24px", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-              <div style={{ width: "24px", height: "24px", position: "relative" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.67 7c.083-.182.127-.374.16-.627c.202-1.572.303-2.358-.158-2.866C20.212 3 19.396 3 17.766 3H6.234c-1.63 0-2.445 0-2.906.507c-.461.508-.36 1.294-.158 2.866c.06.459.158.72.457 1.076c.969 1.15 2.742 3.197 5.23 5.057c.228.17.377.448.402.755c.28 3.425.537 5.765.674 6.917c.071.604.741 1.069 1.293.678c.927-.655 2.66-1.39 2.888-2.612c.108-.577.267-1.585.445-3.244M17.5 8v7m3.5-3.5h-7" color="#000"/></svg>
+            <div
+              style={{
+                height: "24px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+              }}
+            >
+              <div
+                style={{ width: "24px", height: "24px", position: "relative" }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M20.67 7c.083-.182.127-.374.16-.627c.202-1.572.303-2.358-.158-2.866C20.212 3 19.396 3 17.766 3H6.234c-1.63 0-2.445 0-2.906.507c-.461.508-.36 1.294-.158 2.866c.06.459.158.72.457 1.076c.969 1.15 2.742 3.197 5.23 5.057c.228.17.377.448.402.755c.28 3.425.537 5.765.674 6.917c.071.604.741 1.069 1.293.678c.927-.655 2.66-1.39 2.888-2.612c.108-.577.267-1.585.445-3.244M17.5 8v7m3.5-3.5h-7"
+                    color="#000"
+                  />
+                </svg>
               </div>
               <div
                 style={{
@@ -111,6 +164,32 @@ const History = () => {
             >
               Search
             </button>
+
+            {/* Comment List */}
+            {[1, 2, 3].map((_, index) => (
+              <div
+                key={index}
+                style={{
+                  background: "#E6F2FF",
+                  padding: "15px",
+                  borderRadius: "8px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <p style={{ fontWeight: "bold", margin: 0 }}>
+                    Name of batch Comment
+                  </p>
+                  <p style={{ margin: 0, fontSize: "14px" }}>
+                    <strong>32 Comments</strong> | 2 Facebook | 2 Twitter | 3
+                    Instagram
+                  </p>
+                </div>
+                <p style={{ margin: 0, fontSize: "14px" }}>21 December 2024</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
