@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
-import api from "../../../axios/config"
+import api from "../../../axios/config" //import dulu axiosnya
 
 const base = import.meta.env.VITE_API_BASE_URL;
 
@@ -29,8 +29,7 @@ const RegisterBot = () => {
     data.append("cookie", formData.cookie);
 
     try {
-      const response = await api.post("/cookie", data)
-      // const result = await response.json();
+      const response = await api.post("/cookie", data) // pake axiosnya kim jangan cuma fetch
       console.log(response)
       if (response.ok) {
         setStatusMessage("Successfully registered bot!");

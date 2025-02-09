@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import MainWrapper from "../../../components/wrapper/MainWrapper"; // Import MainWrapper
+import MainWrapper from "../../../components/wrapper/MainWrapper"; 
+import api from "../../../axios/config" // ini import axios
 
 const Bots = () => {
-  const [bots, setBots] = useState([]); // State untuk menyimpan data bot
-  const [loading, setLoading] = useState(true); // State untuk indikator loading
+  const [bots, setBots] = useState([]); 
+  const [loading, setLoading] = useState(true); 
 
   // Fetch data dari API
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_BASE_URL}/bots`) // Menggunakan VITE_API_BASE_URL dari .env
+    api.get("/bots/20/0") // di sini bikin pagination
       .then((response) => {
-        setBots(response.data); // Simpan data bot ke state
-        setLoading(false); // Matikan indikator loading
+        setBots(response.data); 
+        setLoading(false); 
       })
       .catch((error) => {
         console.error("Error fetching bot data:", error);
