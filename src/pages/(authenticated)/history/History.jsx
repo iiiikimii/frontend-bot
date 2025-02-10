@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 
 const History = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate(); // Gunakan useNavigate untuk navigasi
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -94,7 +96,12 @@ const History = () => {
               }}
             >
               <div>
-                <p style={{ fontWeight: "bold", margin: 0 }}>Name of batch Comment</p>
+                <p
+                  style={{ fontWeight: "bold", margin: 0, cursor: "pointer", color: "#007bff" }}
+                  onClick={() => navigate("/downloadreport")}
+                >
+                  Name of batch Comment
+                </p>
                 <p style={{ margin: 0, fontSize: "14px" }}>
                   <strong>32 Comments</strong> | 2 Facebook | 2 Twitter | 3 Instagram
                 </p>

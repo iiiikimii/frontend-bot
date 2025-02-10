@@ -8,6 +8,8 @@ import Register from "./pages/(authenticated)/registerbot/Registerbot";
 import Profile from "./pages/(authenticated)/profile/Profile";
 import Accounts from "./pages/(authenticated)/accounts/Accounts";
 import Invite from "./pages/(authenticated)/invite/Invite";
+import DownloadReport from "./pages/(authenticated)/history/DownloadReport";
+import Report from "./pages/(authenticated)/history/Report";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/profile" element={<Profile/>} />
         <Route path="/accounts" element={<Accounts/>} />
         <Route path="/invite" element={<Invite/>} />
+        <Route path="/downloadreport" element={<DownloadReport/>} />
+        <Route path="/report" element={<Report/>} />
       </Routes>
     </Router>
   );
