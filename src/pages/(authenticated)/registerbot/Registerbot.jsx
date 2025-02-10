@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
+import api from "../../../axios/config" //import dulu axiosnya
+
+const base = import.meta.env.VITE_API_BASE_URL;
 
 const RegisterBot = () => {
   const [formData, setFormData] = useState({
     sosmed: "",
     accountName: "",
-    cookieFile: null,
+    cookie: "",
   });
   const [statusMessage, setStatusMessage] = useState("");
   const [statusColor, setStatusColor] = useState("text-[#D20000]");
@@ -22,20 +25,17 @@ const RegisterBot = () => {
     event.preventDefault();
     const data = new FormData();
     data.append("sosmed", formData.sosmed);
-    data.append("accountName", formData.accountName);
-    data.append("cookie", formData.cookieFile);
+    data.append("name", formData.name);
+    data.append("cookie", formData.cookie);
 
     try {
-      const response = await fetch("{{base}}/cookie", {
-        method: "POST",
-        body: data,
-      });
-      const result = await response.json();
+      const response = await api.post("/cookie", data) // pake axiosnya kim jangan cuma fetch
+      console.log(response)
       if (response.ok) {
         setStatusMessage("Successfully registered bot!");
         setStatusColor("text-[#008000]");
       } else {
-        setStatusMessage(result.message || "Unable to login");
+        // setStatusMessage(result.message || "Unable to login");
         setStatusColor("text-[#D20000]");
       }
     } catch (error) {
@@ -51,9 +51,9 @@ const RegisterBot = () => {
     >
       <div className="flex flex-col gap-14 text-left">
         <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
-          {renderInput("Name", "Account name", "accountName", handleChange)}
-          {renderInput("Sosmed", "Choose social media...", "sosmed", handleChange)}
-          {renderFileInput("Cookie", handleFileChange)}
+          {renderInput("Name", "Account name", "name", handleChange)}
+          {renderSelectInput("Sosmed", "sosmed", handleChange)}
+          {renderInput("Cookie", "Paste cookie here", "cookie", handleChange)}
           <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>
           <button
             type="submit"
@@ -76,6 +76,22 @@ const renderInput = (label, placeholder, name, onChange) => (
       placeholder={placeholder}
       onChange={onChange}
     />
+  </div>
+);
+
+const renderSelectInput = (label, name, onChange) => (
+  <div className="flex flex-col gap-2 w-full">
+    <label className="text-[#2B2B2B] text-base">{label}</label>
+    <select
+      name={name}
+      className="h-12 px-4 py-2 text-left rounded-lg border border-[#2B2B2B] w-full"
+      onChange={onChange}
+    >
+      <option value="">Choose social media...</option>
+      <option value="instagram">Instagram</option>
+      <option value="tiktok">TikTok</option>
+      <option value="facebook">Facebook</option>
+    </select>
   </div>
 );
 
