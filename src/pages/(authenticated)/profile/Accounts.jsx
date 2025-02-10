@@ -13,7 +13,8 @@ const Profile = () => {
     api
       .get(`/profiles/20/${page}`)
       .then((response) => {
-        setProfiles(response.data.Data.profiles);
+        console.log(response.data.Data.bots)
+        setProfiles(response.data.Data.bots);
         setHasMore(response.data.Data.has_more);
         setLoading(false);
       })
@@ -24,7 +25,7 @@ const Profile = () => {
   }, [page]);
 
   return (
-    <MainWrapper title="Profile" description="Your Profile">
+    <MainWrapper title="Accounts" description="List Of Accounts">
       <div style={{ width: "100%" }}>
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -44,7 +45,7 @@ const Profile = () => {
               ) : (
                 profiles.map((profile, index) => (
                   <tr key={index} style={{ borderBottom: "1px solid #ddd" }}>
-                    <td style={{ padding: "10px" }}>{profile.username}</td>
+                    <td style={{ padding: "10px" }}>Username</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>{profile.email}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>{profile.role}</td>
                     <td style={{ padding: "10px", textAlign: "center", display: "flex", gap: "10px", justifyContent: "center" }}>

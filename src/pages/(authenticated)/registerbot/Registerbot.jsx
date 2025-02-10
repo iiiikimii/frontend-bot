@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config" //import dulu axiosnya
-
-const base = import.meta.env.VITE_API_BASE_URL;
+import renderInput from "../../../components/RenderInput/RenderInput";
+import renderSelectedSosmed from "../../../components/RenderInput/RenderSelectedSosmed";
 
 const RegisterBot = () => {
   const [formData, setFormData] = useState({
@@ -10,23 +10,24 @@ const RegisterBot = () => {
     accountName: "",
     cookie: "",
   });
+  
   const [statusMessage, setStatusMessage] = useState("");
   const [statusColor, setStatusColor] = useState("text-[#D20000]");
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
-  const handleFileChange = (event) => {
-    setFormData({ ...formData, cookieFile: event.target.files[0] });
+    const { name, value, type, files } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: type === "file" ? files[0] : value,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
-    data.append("sosmed", formData.sosmed);
-    data.append("name", formData.name);
-    data.append("cookie", formData.cookie);
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
 
     try {
       const response = await api.post("/cookie", data) // pake axiosnya kim jangan cuma fetch
@@ -52,7 +53,7 @@ const RegisterBot = () => {
       <div className="flex flex-col gap-14 text-left">
         <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
           {renderInput("Name", "Account name", "name", handleChange)}
-          {renderSelectInput("Sosmed", "sosmed", handleChange)}
+          {renderSelectedSosmed("Sosmed", "sosmed", handleChange)}
           {renderInput("Cookie", "Paste cookie here", "cookie", handleChange)}
           <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>
           <button
@@ -66,44 +67,4 @@ const RegisterBot = () => {
     </MainWrapper>
   );
 };
-
-const renderInput = (label, placeholder, name, onChange) => (
-  <div className="flex flex-col gap-2 w-full">
-    <label className="text-[#2B2B2B] text-base">{label}</label>
-    <input
-      name={name}
-      className="h-12 px-4 py-2 text-left indent-2 rounded-lg border border-[#2B2B2B] w-full"
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  </div>
-);
-
-const renderSelectInput = (label, name, onChange) => (
-  <div className="flex flex-col gap-2 w-full">
-    <label className="text-[#2B2B2B] text-base">{label}</label>
-    <select
-      name={name}
-      className="h-12 px-4 py-2 text-left rounded-lg border border-[#2B2B2B] w-full"
-      onChange={onChange}
-    >
-      <option value="">Choose social media...</option>
-      <option value="instagram">Instagram</option>
-      <option value="tiktok">TikTok</option>
-      <option value="facebook">Facebook</option>
-    </select>
-  </div>
-);
-
-const renderFileInput = (label, onChange) => (
-  <div className="flex flex-col gap-2 w-full">
-    <label className="text-[#2B2B2B] text-base">{label}</label>
-    <input
-      type="file"
-      className="h-12 px-4 py-2 text-left rounded-lg border border-[#2B2B2B] w-full"
-      onChange={onChange}
-    />
-  </div>
-);
-
 export default RegisterBot;

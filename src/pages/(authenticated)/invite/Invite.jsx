@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config"; //import dulu axiosnya
+import renderInput from "../../../components/RenderInput/RenderInput"
 
 const Invite = () => {
   const [formData, setFormData] = useState({
@@ -53,18 +54,5 @@ const Invite = () => {
     </MainWrapper>
   );
 };
-
-const renderInput = (label, placeholder, name, onChange) => (
-  <div className="flex flex-col gap-2 w-full">
-    <label className="text-[#2B2B2B] text-base">{label}</label>
-    <input
-      type="email"
-      name={name}
-      className="h-12 px-4 py-2 text-left indent-2 rounded-lg border border-[#2B2B2B] w-full"
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  </div>
-);
 
 export default Invite;

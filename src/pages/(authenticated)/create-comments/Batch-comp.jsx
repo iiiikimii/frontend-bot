@@ -1,6 +1,6 @@
 import renderInput from "./renderInput-comp";
 
-const batchComp = () => {
+const BatchComp = () => {
   return (
     <div className="flex flex-col gap-14 text-left">
       <form className="flex flex-col gap-6 w-full">
@@ -20,4 +20,4 @@ const batchComp = () => {
   );
 };
 
-export default batchComp;
+export default BatchComp;
