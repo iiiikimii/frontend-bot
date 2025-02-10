@@ -10,6 +10,7 @@ import Accounts from "./pages/(authenticated)/accounts/Accounts";
 import Invite from "./pages/(authenticated)/invite/Invite";
 import DownloadReport from "./pages/(authenticated)/history/DownloadReport";
 import Report from "./pages/(authenticated)/history/Report";
+import Create from "./pages/(authenticated)/profile/Create";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/invite" element={<Invite/>} />
         <Route path="/downloadreport" element={<DownloadReport/>} />
         <Route path="/report" element={<Report/>} />
+        <Route path="/create" element={<Create/>} />
       </Routes>
     </Router>
   );
