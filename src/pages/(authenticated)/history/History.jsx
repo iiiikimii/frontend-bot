@@ -48,10 +48,10 @@ const History = () => {
           />
         </div>
 
-        {/* History List */}
-        <div style={{ marginTop: "20px", width: "100%", maxWidth: "925px" }}>
-          {history.length > 0 ? (
-            history.map((batch) => (
+        {/* History List (Two Columns) */}
+        <div style={{ marginTop: "20px", display: "flex", flexWrap: "wrap", gap: "20px" }}>
+          <div style={{ flex: "1", minWidth: "400px" }}>
+            {history.filter((_, index) => index % 2 === 0).map((batch) => (
               <div
                 key={batch.id_batch}
                 style={{
@@ -76,10 +76,37 @@ const History = () => {
                 </div>
                 <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
               </div>
-            ))
-          ) : (
-            <p>No history found.</p>
-          )}
+            ))}
+          </div>
+
+          <div style={{ flex: "1", minWidth: "400px" }}>
+            {history.filter((_, index) => index % 2 !== 0).map((batch) => (
+              <div
+                key={batch.id_batch}
+                style={{
+                  background: "#E6F2FF",
+                  padding: "15px",
+                  borderRadius: "8px",
+                  marginBottom: "10px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <p
+                    style={{ fontWeight: "bold", color: "#007bff", cursor: "pointer" }}
+                    onClick={() => navigate(`/report/${batch.id_batch}`)}
+                  >
+                    {batch.batch_name}
+                  </p>
+                  <p style={{ fontSize: "14px" }}>
+                    <strong>{batch.sended} Sent</strong> | {batch.target} Target
+                  </p>
+                </div>
+                <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Load More Button */}
