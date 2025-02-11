@@ -1,139 +1,127 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  body {
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: white;
+  display: flex;
+  width: 1177px;
+  height: 572px;
+  padding: 50px 80px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 17px;
+  box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Struktur utama */
+.login-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Bagian kiri (judul dan deskripsi) */
+.login-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%;
+}
+
+.login-left h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #143F66;
+  margin-bottom: 5px;
+}
+
+.login-left p {
+  font-size: 20px;
+  color: #2B2B2B;
+}
+
+/* Bagian kanan (form login) */
+.login-right {
+  width: 50%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 16px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Tombol login */
+.login-btn {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsivitas */
+@media (max-width: 1024px) {
   .container {
-    background-color: white;
-    display: flex;
-    width: 1177px;
-    height: 572px;
-    padding: 118px 102px;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 17px;
-    background: var(--white, #FFF);
-    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.25);
+      width: 90%;
+      height: auto;
+      padding: 40px;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+  }
+
   .login-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      flex-direction: column;
+      gap: 20px;
   }
-  
+
   .login-left {
-    display: flex;
-    width: 424px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    flex-shrink: 0;
+      width: 100%;
+      align-items: center;
   }
-  
-  .login-left h2 {
-    align-self: stretch;
-    color: var(--primary, #143F66);
-    font-family: Inter;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
-  
-  .login-left p {
-    align-self: stretch;
-    color: var(--black, #2B2B2B);
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
+
   .login-right {
-    width: 60%;
+      width: 100%;
   }
-  
-  .input-group {
-    display: flex;
-    padding-bottom: 20px;
-    width: 422px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
-    flex-shrink: 0;
-  }
-  
-  .input-group label {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 9px;
-    align-self: stretch;
-  }
-  
-  .input-group input {
-    align-self: stretch;
-    color: #2B2B2B;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    gap: 9px;
-    flex-direction: column;
-    align-self: stretch;
-  }
-  
-  .error-message {
-    align-self: stretch;
-    color: #D20000;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .Sukses-message {
-    color: #0D9D00;
-    text-align: center;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .login-btn {
-    width: 100%;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .login-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}
