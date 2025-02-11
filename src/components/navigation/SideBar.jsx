@@ -18,22 +18,24 @@ const Sidebar = () => {
 
   return (
     <div>
+      {/* Tombol panah hanya muncul di mode HP */}
       {isMobile && (
         <button
           onClick={() => setIsOpen(!isOpen)}
           style={{
             position: "absolute",
             top: 20,
-            left: 20,
-            background: "#143F66",
-            color: "white",
-            padding: "10px",
+            left: isOpen ? "310px" : "20px",
+            background: "white",
+            color: "black",
+            padding: "5px 10px",
             borderRadius: "5px",
             cursor: "pointer",
             zIndex: 1000,
+            border: "1px solid #ccc",
           }}
         >
-          ☰
+          {isOpen ? "<" : ">"}
         </button>
       )}
 
@@ -41,7 +43,7 @@ const Sidebar = () => {
         style={{
           position: isMobile ? "fixed" : "relative",
           top: 0,
-          left: isOpen ? 0 : "-300px",
+          left: isOpen ? "0" : isMobile ? "-300px" : "0",
           display: "flex",
           flexDirection: "column",
           minWidth: "300px",
@@ -56,7 +58,7 @@ const Sidebar = () => {
           transition: "left 0.3s ease-in-out",
         }}
       >
-        <div className="flex flex-col w-full">
+         <div className="flex flex-col w-full">
           <div
             style={{
               color: "white",
