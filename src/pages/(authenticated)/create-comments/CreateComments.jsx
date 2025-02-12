@@ -15,13 +15,15 @@ const CreateComments = () => {
       <div className="flex gap-4 mb-4">
         <button 
           onClick={() => setShowBatch(false)} 
-          className={`px-4 py-2 rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          className={`rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          style={{padding: "10px 20px"}}
         >
           One Comment
         </button>
         <button 
           onClick={() => setShowBatch(true)} 
-          className={`px-4 py-2 rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          className={`rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          style={{padding: "10px 20px"}}
         >
           Batch Comment
         </button>
