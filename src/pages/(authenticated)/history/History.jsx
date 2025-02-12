@@ -31,83 +31,87 @@ const History = () => {
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         {/* Search Bar */}
         <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "925px" }}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search Comment..."
-            style={{
-              width: "366px",
-              height: "38px",
-              paddingLeft: "40px",
-              fontSize: "16px",
-              border: "1px solid #1C8CF5",
-              borderRadius: "27px",
-              outline: "none",
-            }}
-          />
+        <input
+      type="text"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search Comment..."
+      style={{
+          width: "366px",
+          height: "38px",
+          paddingLeft: "60px",
+          fontSize: "16px",
+          border: "1px solid #1C8CF5",
+          borderRadius: "8px", 
+          outline: "none",
+        }}
+      />
+
         </div>
 
         {/* History List (Two Columns) */}
-        <div style={{ marginTop: "20px", display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          <div style={{ flex: "1", minWidth: "400px" }}>
-            {history.filter((_, index) => index % 2 === 0).map((batch) => (
-              <div
-                key={batch.id_batch}
-                style={{
-                  background: "#E6F2FF",
-                  padding: "15px",
-                  borderRadius: "8px",
-                  marginBottom: "10px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <p
-                    style={{ fontWeight: "bold", color: "#007bff", cursor: "pointer" }}
-                    onClick={() => navigate(`/report/${batch.id_batch}`)}
-                  >
-                    {batch.batch_name}
-                  </p>
-                  <p style={{ fontSize: "14px" }}>
-                    <strong>{batch.sended} Sent</strong> | {batch.target} Target
-                  </p>
-                </div>
-                <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
-              </div>
-            ))}
+<div style={{ marginTop: "20px", overflowX: "auto", width: "100%" }}>
+  <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", minWidth: "800px" }}>
+    <div style={{ flex: "1", minWidth: "400px" }}>
+      {history.filter((_, index) => index % 2 === 0).map((batch) => (
+        <div
+          key={batch.id_batch}
+          style={{
+            background: "#E6F2FF",
+            padding: "15px",
+            borderRadius: "5px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <p
+              style={{ fontWeight: "bold", color: "#007bff", cursor: "pointer" }}
+              onClick={() => navigate(`/report/${batch.id_batch}`)}
+            >
+              {batch.batch_name}
+            </p>
+            <p style={{ fontSize: "14px" }}>
+              <strong>{batch.sended} Sent</strong> | {batch.target} Target
+            </p>
           </div>
-
-          <div style={{ flex: "1", minWidth: "400px" }}>
-            {history.filter((_, index) => index % 2 !== 0).map((batch) => (
-              <div
-                key={batch.id_batch}
-                style={{
-                  background: "#E6F2FF",
-                  padding: "15px",
-                  borderRadius: "8px",
-                  marginBottom: "10px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <p
-                    style={{ fontWeight: "bold", color: "#007bff", cursor: "pointer" }}
-                    onClick={() => navigate(`/report/${batch.id_batch}`)}
-                  >
-                    {batch.batch_name}
-                  </p>
-                  <p style={{ fontSize: "14px" }}>
-                    <strong>{batch.sended} Sent</strong> | {batch.target} Target
-                  </p>
-                </div>
-                <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
-              </div>
-            ))}
-          </div>
+          <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
         </div>
+      ))}
+    </div>
+
+    <div style={{ flex: "1", minWidth: "400px" }}>
+      {history.filter((_, index) => index % 2 !== 0).map((batch) => (
+        <div
+          key={batch.id_batch}
+          style={{
+            background: "#E6F2FF",
+            padding: "15px",
+            borderRadius: "8px",
+            marginBottom: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <p
+              style={{ fontWeight: "bold", color: "#007bff", cursor: "pointer" }}
+              onClick={() => navigate(`/report/${batch.id_batch}`)}
+            >
+              {batch.batch_name}
+            </p>
+            <p style={{ fontSize: "14px" }}>
+              <strong>{batch.sended} Sent</strong> | {batch.target} Target
+            </p>
+          </div>
+          <p style={{ fontSize: "14px" }}>{batch.created_at}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
         {/* Load More Button */}
         {hasMore && (

@@ -99,7 +99,25 @@ body {
   .container {
       width: 90%;
       height: auto;
-      padding: 40px;
+  }
+}
+
+@media (max-width:768px){
+  .login-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    width: 40%;
+  }
+}
+
+@media (max-width:768px){
+  .login-left h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #143F66;
+    margin-bottom: 15px;
   }
 }
 
@@ -107,7 +125,7 @@ body {
   .container {
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      text-align: left;
       padding: 30px;
   }
 

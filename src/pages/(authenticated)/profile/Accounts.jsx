@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config";
+import Swal from "sweetalert2";
+import Invite from "../invite/Invite";
+import "../../../assets/button.css"
 
 const Profile = () => {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(false);
+  const [showBatch, setShowBatch] = useState(false);
+
+ const handleDelete = (profileid) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your bot has been deleted.", "success");
+      }
+    });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -26,6 +46,22 @@ const Profile = () => {
 
   return (
     <MainWrapper title="Accounts" description="List Of Accounts">
+      <div className="flex gap-4 mb-4">
+        <button 
+          onClick={() => setShowBatch(false)} 
+          className={`rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          style={{padding: "10px 20px"}}
+        >
+          Accounts
+        </button>
+        <button 
+          onClick={() => setShowBatch(true)} 
+          className={`rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          style={{padding: "10px 20px"}}
+        >
+          Invite
+        </button>
+      </div>
       <div style={{ width: "100%" }}>
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -49,11 +85,25 @@ const Profile = () => {
                     <td style={{ padding: "10px", textAlign: "center" }}>{profile.email}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>{profile.role}</td>
                     <td style={{ padding: "10px", textAlign: "center", display: "flex", gap: "10px", justifyContent: "center" }}>
-                      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="#04fc13" d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-2 2v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z"></path></svg>
+                    <button
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img src="/icons/edit.svg" alt="" />
                       </button>
-                      <button style={{ background: "none", border: "none", cursor: "pointer" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="#ff0101" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zM9 17h2V8H9zm4 0h2V8h-2zM7 6v13z"></path></svg>
+                      <span className="flex items-center justify-center" style={{ color: "#2b2b2b" }}>|</span>{" "}
+                      <button
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => handleDelete(profileid)}
+                      >
+                        <img src="/icons/trash.svg" alt="" />
                       </button>
                     </td>
                   </tr>
@@ -73,6 +123,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
+      {showBatch ? <Accounts /> : <Invite />}
     </MainWrapper>
   );
 };
