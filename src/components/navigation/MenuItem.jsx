@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-const MenuItem = ({ label, path,icon }) => {
+const MenuItem = ({ label, path, icon, isOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isActive = location.pathname === path; 
+  const isActive = location.pathname === path;
 
   return (
     <div
@@ -22,8 +22,15 @@ const MenuItem = ({ label, path,icon }) => {
       className="hover:bg-[#11487C]"
     >
       {icon}
-      <div style={{ color: "white", fontSize: 14, fontWeight: "500" }}>
-        {label}
+
+      <div
+        style={{
+          display: isOpen ? "flex" : "none",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <span>{label}</span>
       </div>
     </div>
   );

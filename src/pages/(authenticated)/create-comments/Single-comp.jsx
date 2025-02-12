@@ -53,16 +53,67 @@ const SingleComp = () => {
   return (
     <div className="flex flex-col gap-14 text-left">
       <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
-        {renderInput("Name", "Name your comment...", "batch_post_name", handleChange)}
-        {renderInput("Link", "Paste your link here...", "link", handleChange)}
-        {renderSelectedSosmed("Sosmed", "sosmed", handleChange)}
-        {renderSelectedPostType("Type", "post_type", handleChange)}
-        {renderFileInput("Content Txt", "Place your txt here...", "comments", handleChange)}
-        {renderNumberInput("Comments per link", "Type your count of comment per link", "maximum", handleChange)}
-        {renderNumberInput("Screenshot per link", "How many screenshots do you want for report", "total_laporan", handleChange)}
+        {renderInput(
+          "Title",
+          "Title of your comment...",
+          "batch_post_name",
+          handleChange
+        )}
+
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            {renderInput(
+              "Link",
+              "Paste your link here...",
+              "link",
+              handleChange
+            )}
+          </div>
+
+          <div className="w-full sm:w-1/3 grow">
+            {renderFileInput(
+              "Comment Txt",
+              "Place your txt here...",
+              "comments",
+              handleChange
+            )}
+          </div>
+        </div>
+
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            {renderSelectedSosmed("Sosmed", "sosmed", handleChange)}
+          </div>
+
+          <div className="w-full sm:w-1/3 grow">
+            {renderSelectedPostType("Type", "post_type", handleChange)}
+          </div>
+        </div>
+
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            {renderNumberInput(
+              "Comments per link",
+              "Count of comment per link",
+              "maximum",
+              handleChange
+            )}
+          </div>
+
+          <div className="w-full sm:w-1/3 grow">
+            {renderNumberInput(
+              "Screenshot per link",
+              "How many screenshots do you want for report",
+              "total_laporan",
+              handleChange
+            )}
+          </div>
+        </div>
+
+        <p>Please double-check before you continue</p>
 
         {message && <div className="text-sm italic">{message}</div>}
-        
+
         <button
           type="submit"
           className="h-12 bg-[#1C8CF5] rounded-md text-white text-lg font-semibold border-none cursor-pointer"

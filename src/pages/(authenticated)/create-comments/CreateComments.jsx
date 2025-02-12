@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
-// import BatchComp from "./Batch-comp";
+import BatchComp from "./Batch-comp";
 import SingleComp from "./Single-comp";
+import "../../../assets/button.css"
 
 const CreateComments = () => {
+  const [showBatch, setShowBatch] = useState(false);
+
   return (
-    <MainWrapper title={"Create Automation Comments"} description={"You can fill data here and bot creating comment automatically"}>
-      {/* di sini tambahin button buat pilih mau proses batch atau single */}
-      {/* sekarang masih sama isinya tapi yang single coba update sesuai sama yang di wa */}
+    <MainWrapper 
+      title={"Create Automation Comments"} 
+      description={"You can fill data here and bot creating comment automatically"}
+    >
+      <div className="flex gap-4 mb-4">
+        <button 
+          onClick={() => setShowBatch(false)} 
+          className={`px-4 py-2 rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+        >
+          One Comment
+        </button>
+        <button 
+          onClick={() => setShowBatch(true)} 
+          className={`px-4 py-2 rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+        >
+          Batch Comment
+        </button>
+      </div>
 
-      {/* <BatchComp /> */}
-      <SingleComp />
-
-      {/* sementera pake yang single dulu */}
-
+      {showBatch ? <BatchComp /> : <SingleComp />}
     </MainWrapper>
   );
 };
