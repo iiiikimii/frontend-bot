@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config";
 import Swal from "sweetalert2";
 import "../../../assets/button.css";
@@ -25,7 +24,7 @@ const ListBot = () => {
       }
     });
   };
-  
+
   useEffect(() => {
     setLoading(true);
     api
@@ -42,10 +41,7 @@ const ListBot = () => {
   }, [page]);
 
   return (
-    <MainWrapper
-      title="List of Bots"
-      description="List of bots used for comments."
-    >
+    <>
       <div
         style={{
           display: "flex",
@@ -54,13 +50,22 @@ const ListBot = () => {
         }}
       >
         <div className="flex gap-1">
-          <div className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm" style={{padding: 5}}>
+          <div
+            className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm"
+            style={{ padding: 5 }}
+          >
             <img className="w-full" src="/icons/instagram.svg" alt="" />
           </div>
-          <div className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm" style={{padding: 5}}>
+          <div
+            className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm"
+            style={{ padding: 5 }}
+          >
             <img className="w-full" src="/icons/facebook.svg" alt="" />
           </div>
-          <div className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm" style={{padding: 5}}>
+          <div
+            className="flex w-[36px] h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm"
+            style={{ padding: 5 }}
+          >
             <img className="w-full" src="/icons/tiktok.svg" alt="" />
           </div>
         </div>
@@ -133,7 +138,12 @@ const ListBot = () => {
                       >
                         <img src="/icons/edit.svg" alt="" />
                       </button>
-                      <span className="flex items-center justify-center" style={{ color: "#2b2b2b" }}>|</span>{" "}
+                      <span
+                        className="flex items-center justify-center"
+                        style={{ color: "#2b2b2b" }}
+                      >
+                        |
+                      </span>{" "}
                       <button
                         style={{
                           background: "none",
@@ -219,7 +229,7 @@ const ListBot = () => {
           </button>
         </div>
       </div>
-    </MainWrapper>
+    </>
   );
 };
 

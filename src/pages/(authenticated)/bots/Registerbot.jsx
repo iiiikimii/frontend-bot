@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config"; //import dulu axiosnya
 import renderInput from "../../../components/RenderInput/RenderInput";
 import renderSelectedSosmed from "../../../components/RenderInput/RenderSelectedSosmed";
@@ -46,12 +45,6 @@ const RegisterBot = () => {
   };
 
   return (
-    <MainWrapper
-      title={"Register a Bot"}
-      description={
-        "You have to save cookies from the application to log in to the account as a bot"
-      }
-    >
       <div className="flex flex-col text-left">
         <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
           <div className="flex w-full gap-4">
@@ -72,7 +65,6 @@ const RegisterBot = () => {
           </button>
         </form>
       </div>
-    </MainWrapper>
   );
 };
 export default RegisterBot;

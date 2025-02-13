@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 import ListBot from "./ListBot";
-import Registerbot from "../registerbot/RegisterBot";
+import Registerbot from "./Registerbot";
 import "../../../assets/button.css"
 
 const Bots = () => {
