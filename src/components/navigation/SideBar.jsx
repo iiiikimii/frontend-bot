@@ -21,6 +21,7 @@ const Sidebar = () => {
       <div
         className="sm:min-w-[230px]"
         style={{
+          zIndex: "1",
           position: isMobile && isOpen ? "fixed" : "relative",
           top: 0,
           // left: isOpen ? "0" : isMobile ? "-300px" : "0",

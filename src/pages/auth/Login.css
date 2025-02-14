@@ -96,51 +96,69 @@ body {
 }
 
 /* Responsivitas */
-@media (max-width: 1024px) {
-  .container {
-      height: auto;
-  }
-}
-
-@media (max-width:768px){
-  .login-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
-    width: 40%;
-  }
-  
-}
-
-@media (max-width:768px){
-  .login-left h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #143F66;
-    margin-bottom: 15px;
-  }
-}
-
 @media (max-width: 768px) {
   .container {
       flex-direction: column;
       align-items: center;
       text-align: left;
-      padding: 30px;
+      padding: 50px;
+      height: auto;
   }
 
   .login-box {
       flex-direction: column;
+      width: 100%;
       gap: 20px;
   }
 
   .login-left {
       width: 100%;
       align-items: center;
+      text-align: center;
+  }
+
+  .login-left h2 {
+      font-size: 24px;
+  }
+
+  .login-left p {
+      font-size: 16px;
   }
 
   .login-right {
       width: 100%;
+  }
+
+  .input-group input {
+      font-size: 16px;
+      padding: 12px;
+  }
+
+  .login-btn {
+      font-size: 18px;
+      padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      padding: 15px;
+  }
+
+  .login-left h2 {
+      font-size: 22px;
+  }
+
+  .login-left p {
+      font-size: 14px;
+  }
+
+  .input-group input {
+      padding: 10px;
+  }
+
+  .login-btn {
+      font-size: 16px;
+      padding: 12px;
   }
 }

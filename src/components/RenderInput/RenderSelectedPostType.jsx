@@ -3,7 +3,7 @@ const renderSelectedPostType = (label, name, onChange) => (
     <label className="text-[#2B2B2B] text-base">{label}</label>
     <select
       name={name}
-      className="h-12 px-4 py-2 text-left rounded-lg border border-[#2B2B2B] w-full"
+      className="h-12 px-4 py-2 text-left indent-4 rounded-lg border border-[#2B2B2B] w-full"
       onChange={onChange}
     >
       <option value="">Choose your post type...</option>

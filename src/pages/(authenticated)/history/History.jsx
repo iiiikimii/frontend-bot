@@ -30,6 +30,7 @@ const History = () => {
     <MainWrapper title={"History"} description={"Here is what you added"}>
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         {/* Search Bar */}
+
 <div style={{ position: "relative", width: "366px", display: "flex", alignItems: "center" }}>
   <input
     type="text"

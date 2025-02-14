@@ -4,7 +4,7 @@ const renderNumberInput = (label, placeholder, name, onChange) => (
     <input
       name={name}
       type="number"
-      className="h-12 px-4 py-2 text-left indent-2 rounded-lg border border-[#2B2B2B] w-full"
+      className="h-12 px-4 py-2 text-left indent-4 rounded-lg border border-[#2B2B2B] w-full"
       placeholder={placeholder}
       onChange={onChange}
     />
