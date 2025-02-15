@@ -45,7 +45,7 @@ const Profile = () => {
   }, [page]);
 
   return (
-    <MainWrapper title="Accounts" description="List Of Accounts">
+    <MainWrapper title="Accounts" description="List of Accounts">
       <div className="flex gap-4 mb-4">
         <button
           onClick={() => setShowBatch(false)}
