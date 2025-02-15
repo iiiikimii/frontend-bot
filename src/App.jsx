@@ -8,6 +8,7 @@ import Profile from "./pages/(authenticated)/profile/Accounts";
 import DownloadReport from "./pages/(authenticated)/history/DownloadReport";
 import Report from "./pages/(authenticated)/history/Report";
 import Create from "./pages/(authenticated)/profile/Create";
+import EditBot from "./pages/(authenticated)/bots/EditBot";
 
 function App() {
   return (
@@ -15,15 +16,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/create-comment" element={<CreateComment />} />
-        <Route path="/bots" element={<Bots />} />
+
         <Route path="/history" element={<History />} />
-        <Route path="/accounts" element={<Profile/>} />
         <Route path="/downloadreport" element={<DownloadReport/>} />
         <Route path="/report/:batchId" element={<Report/>} />
+
+        <Route path="/accounts" element={<Profile/>} />
         <Route path="/create" element={<Create/>} />
-        {/* <Route path="/registerbot" element={<Register />} /> */}
-        {/* <Route path="/invite" element={<Invite/>} /> */}
+
+        <Route path="/bots" element={<Bots />} />
+        <Route path="/bot/:id_bot" element={<EditBot/>} />
       </Routes>
     </Router>
   );

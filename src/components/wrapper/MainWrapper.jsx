@@ -15,8 +15,8 @@ const MainWrapper = ({ title, description, children }) => {
       >
         {/* title */}
         <div className="flex flex-col mw-full gap-4">
-          <div className="">
-            <button onClick={() => navigate(-1)}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="48" viewBox="0 0 12 24"><path fill="#144776" fill-rule="evenodd" d="m3.343 12l7.071 7.071L9 20.485l-7.778-7.778a1 1 0 0 1 0-1.414L9 3.515l1.414 1.414z"/></svg></button>
+          <div className="flex gap-4 items-center">
+            <button onClick={() => navigate(-1)}><img src="/icons/back.svg" alt="back" className="w-[70%]" /></button>
             <h1 className="text-2xl sm:text-3xl text-[#143F66] font-semibold">{title}</h1>
           </div>
           <p>{description}</p>
