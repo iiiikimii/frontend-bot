@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import MainWrapper from "../../../components/wrapper/MainWrapper";
+import React, { useState, useEffect } from "react";
 import api from "../../../axios/config"; //import dulu axiosnya
 import renderInput from "../../../components/RenderInput/RenderInput";
 import renderSelectedRole from "../../../components/RenderInput/RenderSelectedRole";
@@ -19,13 +18,16 @@ const Invite = () => {
     event.preventDefault();
     const data = new FormData();
     data.append("email", formData.email);
+    data.append("name", formData.name);
+    data.append("role", formData.role);
 
     try {
-      const response = await api.post("/invite", data); // Sesuaikan endpoint jika perlu
+      const response = await api.post("/invite", data);
       console.log(response);
       if (response.ok) {
         setStatusMessage("Successfully invited user!");
         setStatusColor("text-[#008000]");
+        console.log(response);
       } else {
         setStatusColor("text-[#D20000]");
       }
@@ -38,6 +40,7 @@ const Invite = () => {
   return (
     <div className="flex flex-col gap-4 text-left">
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+        {renderInput("Name", "Name...", "name", handleChange)}
         {renderInput("Email", "Email...", "email", handleChange)}
         {renderSelectedRole("Role", "role", handleChange)}
         <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>

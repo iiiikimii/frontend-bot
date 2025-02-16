@@ -27,7 +27,6 @@ const ListBot = () => {
   ];
 
   // 
-
   const handleDelete = (botId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -39,8 +38,8 @@ const ListBot = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        api.delete(`/bots/${botId}`).then(() => {
-          setBots((prev) => prev.filter((bot) => bot.id !== botId));
+        api.delete(`/bot/${botId}`).then(() => {
+          setBots((prev) => prev.filter((bot) => bot.id_bot !== botId)); // Langsung hilangkan dari state
           Swal.fire("Deleted!", "Your bot has been deleted.", "success");
         });
       }
@@ -133,7 +132,6 @@ const ListBot = () => {
               >
                 <th style={{ padding: "10px" }}>Name</th>
                 <th style={{ padding: "10px", textAlign: "center" }}>Sosmed</th>
-                <th style={{ padding: "10px", textAlign: "center" }}>Status</th>
                 <th style={{ padding: "10px", textAlign: "center" }}>Action</th>
               </tr>
             </thead>
@@ -153,20 +151,6 @@ const ListBot = () => {
                     <td style={{ padding: "10px" }}>{bot.account_name}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>
                       {bot.sosmed}
-                    </td>
-                    <td
-                      style={{
-                        padding: "10px",
-                        textAlign: "center",
-                        color:
-                          bot.status === "Active"
-                            ? "#0D9D00"
-                            : bot.status === "Issue"
-                            ? "#FAAB00"
-                            : "#D20000",
-                      }}
-                    >
-                      {bot.status}
                     </td>
                     <td
                       style={{

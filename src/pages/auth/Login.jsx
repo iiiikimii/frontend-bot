@@ -18,9 +18,10 @@ const Login = () => {
   
       const response = await api.post("/login", formData);
   
-      console.log("Login successful:", response.data);
+      localStorage.setItem("role", response.data.Data.role)
+      localStorage.setItem("name", response.data.Data.name)
   
-      navigate("/dashboard");
+      navigate("/create-comment");
     } catch (error) {
       console.error("Login error:", error);
       alert("Username atau password salah!");

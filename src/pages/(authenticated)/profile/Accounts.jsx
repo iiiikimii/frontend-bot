@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MainWrapper from "../../../components/wrapper/MainWrapper";
 import api from "../../../axios/config";
 import Swal from "sweetalert2";
@@ -6,11 +7,16 @@ import Invite from "./Invite";
 import "../../../assets/button.css";
 
 const Profile = () => {
+
+  const navigate = useNavigate();
+
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const [showBatch, setShowBatch] = useState(false);
+
+  // 
 
   const handleDelete = (profileid) => {
     Swal.fire({
@@ -23,10 +29,14 @@ const Profile = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your bot has been deleted.", "success");
+        api.delete(`/user/${profileid}`).then(() => {
+          window.location.reload();
+        });
       }
     });
   };
+
+  // 
 
   useEffect(() => {
     setLoading(true);
@@ -81,10 +91,8 @@ const Profile = () => {
                     textAlign: "left",
                   }}
                 >
-                  <th style={{ padding: "10px" }}>Username</th>
-                  <th style={{ padding: "10px", textAlign: "center" }}>
-                    Email
-                  </th>
+                  <th style={{ padding: "10px" }}>Name</th>
+                  <th style={{ padding: "10px", textAlign: "left" }}>Email</th>
                   <th style={{ padding: "10px", textAlign: "center" }}>Role</th>
                   <th style={{ padding: "10px", textAlign: "center" }}>
                     Action
@@ -104,12 +112,16 @@ const Profile = () => {
                 ) : (
                   profiles.map((profile, index) => (
                     <tr key={index} style={{ borderBottom: "1px solid #ddd" }}>
-                      <td style={{ padding: "10px" }}>Username</td>
-                      <td style={{ padding: "10px", textAlign: "center" }}>
+                      <td style={{ padding: "10px" }}>{profile.name}</td>
+                      <td style={{ padding: "10px", textAlign: "left" }}>
                         {profile.email}
                       </td>
                       <td style={{ padding: "10px", textAlign: "center" }}>
-                        {profile.role}
+                        {profile.inviting ? (
+                          <span className="text-yellow-500">Inviting</span>
+                        ) : (
+                          <span>{profile.role}</span>
+                        )}
                       </td>
                       <td
                         style={{
@@ -125,7 +137,7 @@ const Profile = () => {
                             background: "none",
                             border: "none",
                             cursor: "pointer",
-                          }}
+                          }} onClick={()=>navigate(`/account/${profile.id_user}`)}
                         >
                           <img src="/icons/edit.svg" alt="" />
                         </button>
@@ -141,7 +153,7 @@ const Profile = () => {
                             border: "none",
                             cursor: "pointer",
                           }}
-                          onClick={() => handleDelete(profileid)}
+                          onClick={() => handleDelete(profile.id_user)}
                         >
                           <img src="/icons/trash.svg" alt="" />
                         </button>

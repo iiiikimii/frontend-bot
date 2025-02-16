@@ -8,7 +8,7 @@ const MainWrapper = ({ title, description, children }) => {
     <div className="flex w-screen h-screen">
       <Sidebar />
       <div
-        className="w-full h-full overflow-y-scroll flex flex-col gap-[25px]"
+        className="w-screen h-screen overflow-y-scroll flex flex-col gap-[25px]"
         style={{
           padding: window.innerWidth <= 660 ? "30px 14px" : "40px",
         }}
