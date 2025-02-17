@@ -21,20 +21,12 @@ const Invite = () => {
     data.append("name", formData.name);
     data.append("role", formData.role);
 
-    try {
-      const response = await api.post("/invite", data);
-      console.log(response);
-      if (response.ok) {
-        setStatusMessage("Successfully invited user!");
-        setStatusColor("text-[#008000]");
-        console.log(response);
-      } else {
-        setStatusColor("text-[#D20000]");
-      }
-    } catch (error) {
+    api.post("invite", data).then(()=>{
+      window.location.reload()
+    }).catch((error) => {
       setStatusMessage("Error connecting to server");
       setStatusColor("text-[#D20000]");
-    }
+    })
   };
 
   return (

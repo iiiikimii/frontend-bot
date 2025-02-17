@@ -8,7 +8,7 @@ import CreateComment from "./pages/(authenticated)/create-comments/CreateComment
 import Profile from "./pages/(authenticated)/profile/Accounts";
 import DownloadReport from "./pages/(authenticated)/history/DownloadReport";
 import Report from "./pages/(authenticated)/history/Report";
-import Create from "./pages/(authenticated)/profile/Create";
+import Create from "./pages/auth/Create";
 import ProfileEdit from "./pages/(authenticated)/profile/AccountsEdit";
 import EditBot from "./pages/(authenticated)/bots/EditBot";
 

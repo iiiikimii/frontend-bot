@@ -39,12 +39,12 @@ const Login = () => {
         <div className="login-right">
           <form onSubmit={handleLogin}>
             <div className="input-group">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">Email</label>
               <input
                 type="text"
                 name="username"
                 id="username"
-                placeholder="Username..."
+                placeholder="Email..."
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required

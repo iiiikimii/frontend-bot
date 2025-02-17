@@ -53,15 +53,16 @@ const Sidebar = () => {
       >
         <div className="flex flex-col w-full">
           <div
-            className="flex justify-between"
+            className="flex justify-between items-start"
             style={{
               color: "white",
               marginBottom: 30,
             }}
           >
             {isOpen && (
-              <div>
-                <h1 className="text-2xl font-semibold">My Bot</h1>
+              <div className="flex flex-col gap-2">
+                <img src="/logo/selawe.svg" alt="Selawe" className="h-6" />
+                <p className="text-sm font-semibold">Bot Comment System</p>
                 <p className="text-sm">{name}</p>
               </div>
             )}

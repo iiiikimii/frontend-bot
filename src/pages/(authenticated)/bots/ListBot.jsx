@@ -40,7 +40,6 @@ const ListBot = () => {
       if (result.isConfirmed) {
         api.delete(`/bot/${botId}`).then(() => {
           setBots((prev) => prev.filter((bot) => bot.id_bot !== botId)); // Langsung hilangkan dari state
-          Swal.fire("Deleted!", "Your bot has been deleted.", "success");
         });
       }
     });
@@ -73,6 +72,7 @@ const ListBot = () => {
           justifyContent: "space-between",
           alignItems: "center",
         }}
+        className="flex-wrap max-w-full gap-2"
       >
         <div className="flex gap-1 items-center">
           {sosmed.map((item) => (
@@ -99,22 +99,21 @@ const ListBot = () => {
         <div className="flex gap-2 items-center">
           <div
             className={`flex h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm ${
-              isActive === false ? "bg-[#c4d4e4]" : ""
-            }`}
-            style={{ padding: 5, cursor: "pointer" }}
-            onClick={() => setIsActive(false)}
-          >
-            <p>Inactive</p>
-          </div>
-
-          <div
-            className={`flex h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm ${
               isActive === true ? "bg-[#c4d4e4]" : ""
             }`}
             style={{ padding: 5, cursor: "pointer" }}
             onClick={() => setIsActive(true)}
           >
             <p>Active</p>
+          </div>
+          <div
+            className={`flex h-[36px] items-center justify-center hover:bg-[#c4d4e4] duration-300 rounded-sm ${
+              isActive === false ? "bg-[#c4d4e4]" : ""
+            }`}
+            style={{ padding: 5, cursor: "pointer" }}
+            onClick={() => setIsActive(false)}
+          >
+            <p>Inactive</p>
           </div>
         </div>
       </div>

@@ -105,7 +105,7 @@ const EditBot = () => {
             type="submit"
             className="h-12 bg-[#1C8CF5] rounded-md text-white text-lg font-semibold border-none cursor-pointer"
           >
-            Register
+            Update
           </button>
         </form>
       </div>

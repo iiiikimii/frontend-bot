@@ -4,7 +4,7 @@ const renderFileInput = (label, placeholder, name, onChange) => (
     <input
       name={name}
       type="file"
-      className="h-12 px-4 py-2 text-left indent-4 placeholder:-translate-y-6 rounded-lg border border-[#2B2B2B] w-full"
+      className="text-gray-400 h-12 px-4 py-2 text-left indent-4 placeholder:-translate-y-6 rounded-lg border border-[#2B2B2B] w-full"
       placeholder={placeholder}
       onChange={onChange}
       style={{lineHeight:"44px"}}
