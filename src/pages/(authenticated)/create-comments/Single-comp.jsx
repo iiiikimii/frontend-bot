@@ -63,7 +63,7 @@ const SingleComp = () => {
         <div className="flex w-full gap-4 flex-wrap">
           <div className="w-full sm:w-1/3 grow">
             {renderInput(
-              "Link",
+              "Link Content",
               "Paste your link here...",
               "link",
               handleChange
@@ -82,7 +82,7 @@ const SingleComp = () => {
 
         <div className="flex w-full gap-4 flex-wrap">
           <div className="w-full sm:w-1/3 grow">
-            {renderSelectedSosmed("Sosmed", "sosmed", handleChange)}
+            {renderSelectedSosmed("Social Media", "Social Media", handleChange)}
           </div>
 
           <div className="w-full sm:w-1/3 grow">
