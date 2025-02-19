@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import api from "../../../axios/config"; //import dulu axiosnya
+import api from "../../../axios/config"; // Import axios
 import renderInput from "../../../components/RenderInput/RenderInput";
 import renderSelectedSosmed from "../../../components/RenderInput/RenderSelectedSosmed";
+import RenderSelectedDemografi from "../../../components/RenderInput/RenderSelectedDemografi"; // Pakai huruf besar karena ini komponen React
 
 const RegisterBot = () => {
   const [formData, setFormData] = useState({
     sosmed: "",
     accountName: "",
     cookie: "",
+    demografi: "",
   });
-
 
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
@@ -36,7 +37,6 @@ const RegisterBot = () => {
           text: "Successfully registered bot!",
           confirmButtonColor: "#3085d6",
         }).then((result) => {
-          console.log(result)
           if (result.isConfirmed) {
             window.location.reload();
           }
@@ -60,10 +60,23 @@ const RegisterBot = () => {
             {renderInput("Name", "Account name", "name", handleChange)}
           </div>
           <div className="sm:min-w-1/3 grow">
-            {renderSelectedSosmed("Sosmed", "sosmed", handleChange)}
+            {renderSelectedSosmed("sosmed", handleChange)}
           </div>
         </div>
-        {renderInput("Cookie", "Paste cookie here", "cookie", handleChange)}
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="sm:min-w-1/3 grow">
+            {renderInput("Cookie", "Paste cookie here", "cookie", handleChange)}
+          </div>
+          <div className="sm:min-w-1/3 grow">
+            {/* FIXED: Memanggil RenderSelectedDemografi sebagai JSX Component */}
+            <RenderSelectedDemografi
+              name="demografi"
+              onChange={handleChange}
+              value={formData.demografi}
+            />
+          </div>
+        </div>
+
         <button
           type="submit"
           className="h-12 bg-[#1C8CF5] rounded-md text-white text-lg font-semibold border-none cursor-pointer"
@@ -74,4 +87,5 @@ const RegisterBot = () => {
     </div>
   );
 };
+
 export default RegisterBot;

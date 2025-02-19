@@ -15,14 +15,14 @@ const Bots = () => {
       <div className="flex gap-4 mb-4">
         <button 
           onClick={() => setShowBatch(false)} 
-          className={`rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          className={`rounded ${!showBatch ? 'bg-[#143F66] text-white' : 'bg-gray-100'}`}
           style={{padding: "10px 20px"}}
         >
           List bot
         </button>
         <button 
           onClick={() => setShowBatch(true)} 
-          className={`rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-none'}`}
+          className={`rounded ${showBatch ? 'bg-[#143F66] text-white' : 'bg-gray-100'}`}
           style={{padding: "10px 20px"}}
         >
           Register Bot

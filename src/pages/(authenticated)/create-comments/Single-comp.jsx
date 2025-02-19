@@ -5,6 +5,8 @@ import renderFileInput from "../../../components/RenderInput/RenderFileInput";
 import api from "../../../axios/config";
 import renderSelectedPostType from "../../../components/RenderInput/RenderSelectedPostType";
 import renderSelectedSosmed from "../../../components/RenderInput/RenderSelectedSosmed";
+import RenderSelectedDemografiCheckbox from "../../../components/RenderInput/RenderInputCheckBox";
+import renderSelectedCommentType from "../../../components/RenderInput/RenderSelectedTypeComment";
 
 const SingleComp = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +17,16 @@ const SingleComp = () => {
     maximum: "",
     total_laporan: "",
     batch_post_name: "",
+    comment_type: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [selectedDemografi, setSelectedDemografi] = useState([]);
+
+  const handleDemografiChange = (event) => {
+    setSelectedDemografi(event.target.value);
+  };
 
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
@@ -38,6 +46,10 @@ const SingleComp = () => {
       data.append(key, formData[key]);
     });
 
+    selectedDemografi.forEach((demografi) => {
+      data.append("demografi[]", demografi);
+    });
+
     try {
       const response = await api.post("/post", data);
       setMessage("Successfully created comments!");
@@ -53,12 +65,30 @@ const SingleComp = () => {
   return (
     <div className="flex flex-col gap-14 text-left">
       <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
-        {renderInput(
-          "Title",
-          "Title of your comment...",
-          "batch_post_name",
-          handleChange
-        )}
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            {renderInput(
+              "Title",
+              "Title of your comment...",
+              "batch_post_name",
+              handleChange
+            )}
+          </div>
+        </div>
+
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/4 grow">
+            {renderSelectedSosmed("sosmed", handleChange)}
+          </div>
+
+          <div className="w-full sm:w-1/4 grow">
+            {renderSelectedCommentType("comment_type", handleChange)}
+          </div>
+
+          <div className="w-full sm:w-1/4 grow">
+            {renderSelectedPostType("post_type", handleChange)}
+          </div>
+        </div>
 
         <div className="flex w-full gap-4 flex-wrap">
           <div className="w-full sm:w-1/3 grow">
@@ -81,17 +111,7 @@ const SingleComp = () => {
         </div>
 
         <div className="flex w-full gap-4 flex-wrap">
-          <div className="w-full sm:w-1/3 grow">
-            {renderSelectedSosmed("Social Media", "Social Media", handleChange)}
-          </div>
-
-          <div className="w-full sm:w-1/3 grow">
-            {renderSelectedPostType("Type", "post_type", handleChange)}
-          </div>
-        </div>
-
-        <div className="flex w-full gap-4 flex-wrap">
-          <div className="w-full sm:w-1/3 grow">
+          <div className="w-full sm:w-1/5 grow">
             {renderNumberInput(
               "Comments per link",
               "Count of comment per link",
@@ -100,7 +120,7 @@ const SingleComp = () => {
             )}
           </div>
 
-          <div className="w-full sm:w-1/3 grow">
+          <div className="w-full sm:w-1/5 grow">
             {renderNumberInput(
               "Screenshot per link",
               "How many screenshots do you want for report",
@@ -110,7 +130,16 @@ const SingleComp = () => {
           </div>
         </div>
 
-        <p>Please double-check before you continue</p>
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            <RenderSelectedDemografiCheckbox
+              name="demografi"
+              onChange={handleDemografiChange}
+              value={selectedDemografi}
+            />
+          </div>
+        </div>
+
 
         {message && <div className="text-sm italic">{message}</div>}
 

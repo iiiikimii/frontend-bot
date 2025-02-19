@@ -34,7 +34,7 @@ const Invite = () => {
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
         {renderInput("Name", "Name...", "name", handleChange)}
         {renderInput("Email", "Email...", "email", handleChange)}
-        {renderSelectedRole("Role", "role", handleChange)}
+        {renderSelectedRole("role", handleChange)}
         <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>
         <button
           type="submit"

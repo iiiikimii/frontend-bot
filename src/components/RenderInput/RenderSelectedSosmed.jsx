@@ -1,6 +1,6 @@
-const renderSelectedSosmed = (label, name, onChange, value) => (
+const renderSelectedSosmed = (name, onChange, value) => (
   <div className="flex flex-col gap-2 w-full">
-    <label className="text-[#2B2B2B] text-base">{label}</label>
+    <label className="text-[#2B2B2B] text-base">Social Media</label>
     <select
       name={name}
       className="h-12 px-4 py-2 text-left indent-4 rounded-lg border border-[#2B2B2B] w-full"

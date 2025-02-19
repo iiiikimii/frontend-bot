@@ -27,21 +27,19 @@ const History = () => {
           setLoading(false);
         });
     };
-  
+
     fetchData();
-  
+
     const interval = setInterval(() => {
       fetchData(); // Refresh data every 5 seconds
     }, 5000);
-  
+
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [page]);
-  
-  
 
   return (
     <MainWrapper title={"History"} description={"Here is what you added"}>
-      <div
+      {/* <div
         style={{
           position: "relative",
           width: "360px",
@@ -96,7 +94,7 @@ const History = () => {
             <path d="m10 10l3.5 3.5m-2-7a5 5 0 1 1-10 0a5 5 0 0 1 10 0Z" />
           </svg>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex w-full">
         <div className="flex gap-4 w-full flex-wrap">
@@ -149,11 +147,7 @@ const History = () => {
 
               <div role="status">
                 {batch.processed ? (
-                  <img
-                    src="/icons/check.png"
-                    alt="Check"
-                    className="w-6 h-6"
-                  />
+                  <img src="/icons/check.png" alt="Check" className="w-6 h-6" />
                 ) : (
                   <svg
                     aria-hidden="true"

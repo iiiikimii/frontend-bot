@@ -71,7 +71,7 @@ const EditAccount = () => {
         <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
           {renderInput("Name", "Name...", "name", handleChange, formData.name)}
           {renderInput("Email", "Email...", "email", handleChange, formData.email)}
-          {renderSelectedRole("Role", "role", handleChange, formData.role)}
+          {renderSelectedRole("role", handleChange, formData.role)}
           <div className={`text-sm italic ${statusColor}`}>{statusMessage}</div>
           <button
             type="submit"

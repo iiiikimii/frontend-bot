@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import renderInput from "../../../components/RenderInput/RenderInput";
 import renderNumberInput from "../../../components/RenderInput/RenderNumberInput";
 import renderFileInput from "../../../components/RenderInput/RenderFileInput";
+import renderSelectedCommentType from "../../../components/RenderInput/RenderSelectedTypeComment";
 import api from "../../../axios/config";
-import renderSelectedPostType from "../../../components/RenderInput/RenderSelectedPostType";
-import renderSelectedSosmed from "../../../components/RenderInput/RenderSelectedSosmed";
 
 const BatchComp = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +16,11 @@ const BatchComp = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [selectedDemografi, setSelectedDemografi] = useState([]);
+
+  const handleDemografiChange = (event) => {
+    setSelectedDemografi(event.target.value);
+  };
 
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
@@ -34,6 +38,10 @@ const BatchComp = () => {
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
+    });
+
+    selectedDemografi.forEach((demografi) => {
+      data.append("demografi[]", demografi);
     });
 
     try {
@@ -98,7 +106,15 @@ const BatchComp = () => {
           </div>
         </div>
 
-        <p>Please double-check before you continue</p>
+        <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            <RenderSelectedDemografiCheckbox
+              name="demografi"
+              onChange={handleDemografiChange}
+              value={selectedDemografi}
+            />
+          </div>
+        </div>
 
         {message && <div className="text-sm italic">{message}</div>}
 

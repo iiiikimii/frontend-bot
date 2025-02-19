@@ -22,6 +22,27 @@ const Report = () => {
     }
   }, [batchId]);
 
+  const handleDownload = async () => {
+    try {
+      const response = await api.get(`/report/${batchId}`, {
+        responseType: "blob",
+      });
+
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(
+        new Blob([response.data], { type: "application/pdf" })
+      );
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "report.pdf");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    }
+  };
+
   return (
     <MainWrapper title="History" description="Here is what your Add">
       {data ? (
@@ -92,9 +113,7 @@ const Report = () => {
           </div>
 
           <div>
-            <button>
-              Download Report
-            </button>
+            <button onClick={handleDownload}>Download Report</button>
           </div>
 
           <div className="w-full overflow-x-scroll">
@@ -109,9 +128,9 @@ const Report = () => {
                   <th style={{ padding: "10px" }}>No</th>
                   <th style={{ padding: "10px" }}>Link</th>
                   <th style={{ padding: "10px" }}>Sosmed</th>
-                  <th style={{ padding: "10px" }}>Target</th>
+                  {/* <th style={{ padding: "10px" }}>Target</th>
                   <th style={{ padding: "10px" }}>Sent</th>
-                  <th style={{ padding: "10px" }}>Screenshot</th>
+                  <th style={{ padding: "10px" }}>Screenshot</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -132,9 +151,9 @@ const Report = () => {
                         </a>
                       </td>
                       <td style={{ padding: "10px" }}>{post.sosmed}</td>
-                      <td style={{ padding: "10px" }}>
+                      {/* <td style={{ padding: "10px" }}>
                         {post.total_post_success}
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 ) : (
