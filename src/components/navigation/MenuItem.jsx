@@ -30,7 +30,7 @@ const MenuItem = ({ label, path, icon, isOpen }) => {
           gap: "10px",
         }}
       >
-        <span>{label}</span>
+        <span className="text-sm" >{label}</span>
       </div>
     </div>
   );
