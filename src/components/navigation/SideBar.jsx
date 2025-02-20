@@ -10,14 +10,14 @@ const Sidebar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const name = localStorage.getItem("name");
 
-  // useEffect(() => {
-  //   const role = localStorage.getItem("role");
-  //   if (!role) {
-  //     navigate("/");
-  //   } else if (role === "admin") {
-  //     setIsAdmin(true);
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    const role = localStorage.getItem("role");
+    if (!role) {
+      navigate("/");
+    } else if (role === "admin") {
+      setIsAdmin(true);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const handleResize = () => {

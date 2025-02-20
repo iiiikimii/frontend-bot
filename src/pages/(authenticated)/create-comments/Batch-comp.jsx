@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import renderInput from "../../../components/RenderInput/RenderInput";
 import renderNumberInput from "../../../components/RenderInput/RenderNumberInput";
 import renderFileInput from "../../../components/RenderInput/RenderFileInput";
-import renderSelectedCommentType from "../../../components/RenderInput/RenderSelectedTypeComment";
+import RenderSelectedDemografiCheckbox from "../../../components/RenderInput/RenderInputCheckBox";
 import api from "../../../axios/config";
 
 const BatchComp = () => {

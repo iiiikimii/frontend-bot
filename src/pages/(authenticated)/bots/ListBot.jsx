@@ -131,6 +131,7 @@ const ListBot = () => {
               >
                 <th style={{ padding: "10px" }}>Name</th>
                 <th style={{ padding: "10px", textAlign: "center" }}>Sosmed</th>
+                <th style={{ padding: "10px", textAlign: "center" }}>Demographic</th>
                 <th style={{ padding: "10px", textAlign: "center" }}>Action</th>
               </tr>
             </thead>
@@ -150,6 +151,9 @@ const ListBot = () => {
                     <td style={{ padding: "10px" }}>{bot.account_name}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>
                       {bot.sosmed}
+                    </td>
+                    <td style={{ padding: "10px", textAlign: "center" }}>
+                      {bot.demographic}
                     </td>
                     <td
                       style={{
