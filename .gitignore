@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .env
+main
+commentWorker
+templates
+main.exe

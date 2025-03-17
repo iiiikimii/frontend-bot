@@ -5,3 +5,7 @@ button {
 button:hover {
   background: #cbd0d4;
 }
+
+.not-change:hover {
+  background: #0F3250;
+}

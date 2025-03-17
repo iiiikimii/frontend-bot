@@ -5,8 +5,10 @@ import api from "../../axios/config";
 import renderSelectedPostType from "../../components/RenderInput/RenderSelectedPostType";
 import renderSelectedSosmed from "../../components/RenderInput/RenderSelectedSosmed";
 import RenderSelectedDemografiCheckbox from "../../components/RenderInput/RenderInputCheckBox";
-import renderSelectedCommentType from "../../components/RenderInput/RenderSelectedTypeComment";
 import renderInput from "../../components/RenderInput/RenderInput";
+import RenderSelectedPostType from "../../components/RenderInput/RenderSelectedPostType";
+import RenderSelectedSosmed from "../../components/RenderInput/RenderSelectedSosmed";
+import RenderSelectedCommentType from "../../components/RenderInput/RenderSelectedTypeComment";
 
 const SingleComp = () => {
   const [formData, setFormData] = useState({
@@ -78,15 +80,15 @@ const SingleComp = () => {
 
         <div className="flex w-full gap-4 flex-wrap">
           <div className="w-full sm:w-1/4 grow">
-            {renderSelectedSosmed("sosmed", handleChange)}
+            {RenderSelectedSosmed("sosmed", onchange=(handleChange))}
           </div>
 
           <div className="w-full sm:w-1/4 grow">
-            {renderSelectedCommentType("comment_type", handleChange)}
+            {RenderSelectedCommentType("comment_type", handleChange)}
           </div>
 
           <div className="w-full sm:w-1/4 grow">
-            {renderSelectedPostType("post_type", handleChange)}
+            {RenderSelectedPostType("post_type", onchange=(handleChange))}
           </div>
         </div>
 
@@ -100,18 +102,34 @@ const SingleComp = () => {
             )}
           </div>
 
-          <div className="w-full sm:w-1/3 grow">
-            {renderFileInput(
-              "Comment Txt",
-              "Place your txt here...",
-              "comments",
-              handleChange
-            )}
-          </div>
+          
         </div>
 
-        <div className="flex w-full gap-4 flex-wrap">
-          <div className="w-full sm:w-1/5 grow">
+        {/* <div className="flex w-full gap-4 flex-wrap">
+          
+        </div> */}
+
+        {/* <div className="flex w-full gap-4 flex-wrap">
+          <div className="w-full sm:w-1/3 grow">
+            <RenderSelectedDemografiCheckbox
+              name="demografi"
+              onChange={handleDemografiChange}
+              value={selectedDemografi}
+            />
+          </div>
+        </div>
+         */}
+        <div className="flex gap-4" >
+          <div className="w-full s grow">
+              {renderFileInput(
+                "Comment Txt",
+                "comments",
+                handleChange,
+                formData
+              )}
+          </div>
+          <div className="w-full flex flex-col gap-6" >
+          <div className="w-full  grow">
             {renderNumberInput(
               "Comments per link",
               "Count of comment per link",
@@ -120,7 +138,7 @@ const SingleComp = () => {
             )}
           </div>
 
-          <div className="w-full sm:w-1/5 grow">
+          <div className="w-full  grow">
             {renderNumberInput(
               "Screenshot per link",
               "How many screenshots do you want for report",
@@ -128,15 +146,6 @@ const SingleComp = () => {
               handleChange
             )}
           </div>
-        </div>
-
-        <div className="flex w-full gap-4 flex-wrap">
-          <div className="w-full sm:w-1/3 grow">
-            {/* <RenderSelectedDemografiCheckbox
-              name="demografi"
-              onChange={handleDemografiChange}
-              value={selectedDemografi}
-            /> */}
           </div>
         </div>
 

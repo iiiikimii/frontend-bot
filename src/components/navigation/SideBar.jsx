@@ -59,7 +59,7 @@ const Sidebar = () => {
               marginBottom: 30,
             }}
           >
-            {isOpen && (
+            {/* {isOpen && (
               <div className="flex flex-col gap-2">
                 <img src="/logo/selawe.svg" alt="Selawe" className="h-6" />
                 <p className="text-sm font-semibold">Bot Comment System</p>
@@ -78,7 +78,7 @@ const Sidebar = () => {
                   <p className="text-sm">{name}</p>
                 </div>
               </div>
-            )}
+            )} */}
 
             {isMobile &&
               (isOpen ? (
@@ -105,9 +105,9 @@ const Sidebar = () => {
               color: "white",
             }}
           >
-            {isOpen && (
+            {/* {isOpen && (
               <p className="text-md font-semibold text-white">Comment</p>
-            )}
+            )} */}
 
             <div className="flex flex-col gap-2">
               <MenuItem
@@ -148,7 +148,7 @@ const Sidebar = () => {
               />
             </div>
 
-            {isOpen && <p className="text-md font-semibold">Bots</p>}
+            {/* {isOpen && <p className="text-md font-semibold">Bots</p>} */}
 
             <div className="flex flex-col gap-2">
               <MenuItem
